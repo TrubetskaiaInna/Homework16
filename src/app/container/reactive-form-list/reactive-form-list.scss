@@ -1,0 +1,41 @@
+.form-inline{
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  margin: 10px auto;
+}
+
+.form-control{
+  width: 400px;
+  padding-left: 30px;
+}
+
+.text{
+  width: 100px;
+  padding-right: 8px;
+  color: grey;
+}
+
+.wrapperButton{
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  margin-top: 20px;
+}
+
+.form-check{
+  display: flex;
+  justify-content: flex-end;
+  width: 500px;
+}
+
+.wrapperCheck{
+  display: flex;
+  justify-content: flex-end;
+  width: 400px;
+}
+
+.textCheck{
+  width: 250px;
+  color: grey;
+}
