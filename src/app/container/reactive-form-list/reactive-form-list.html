@@ -1,10 +1,16 @@
 <form class="form-inline my-2 my-lg-0" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 
   <label> <span class="text">First name:</span>
-    <input type="text"
+    <input id="firstName"
+           type="text"
            class="form-control mr-sm-2"
            formControlName="firstName">
   </label>
+
+  <div class="alert alert-danger"
+       *ngIf="profileForm.controls['firstName'].invalid && profileForm.controls['firstName'].touched">
+    first name can only contain numbers and letters
+  </div>
 
   <label> <span class="text">Last name:</span>
     <input type="text"
@@ -12,11 +18,21 @@
            formControlName="lastName">
   </label>
 
+  <div class="alert alert-danger"
+       *ngIf="profileForm.controls['lastName'].invalid && profileForm.controls['lastName'].touched">
+    last name can only contain numbers and letters
+  </div>
+
   <label> <span class="text">User name:</span>
     <input type="text"
            class="form-control mr-sm-2"
            formControlName="userName">
   </label>
+
+  <div class="alert alert-danger"
+       *ngIf="profileForm.controls['userName'].invalid && profileForm.controls['userName'].touched">
+    user name can only contain numbers and letters
+  </div>
 
   <label> <span class="text">Email:</span>
     <input type="text"
@@ -24,17 +40,32 @@
            formControlName="email">
   </label>
 
+  <div class="alert alert-danger"
+       *ngIf="profileForm.controls['email'].invalid && profileForm.controls['email'].touched">
+    enter valid email
+  </div>
+
   <label> <span class="text">Password:</span>
     <input type="password"
            class="form-control mr-sm-2"
            formControlName="password">
   </label>
 
+  <div class="alert alert-danger"
+       *ngIf="profileForm.controls['password'].invalid && profileForm.controls['password'].touched">
+    password must contain at least 10 characters
+  </div>
+
   <label> <span class="text">Confirm password:</span>
     <input type="password"
            class="form-control mr-sm-2"
            formControlName="confirmPassword">
   </label>
+
+  <div class="alert alert-danger"
+       *ngIf="profileForm.controls['confirmPassword'].invalid && profileForm.controls['confirmPassword'].touched">
+    password must contain at least 10 characters
+  </div>
 
   <div class="form-inline">
     <label> <span class="text">Region:</span>
@@ -86,6 +117,9 @@
   </div>
 
   <div class="wrapperButton">
-    <button class="btn btn-outline-secondary">Submit</button>
+    <button [disabled]="!profileForm.valid" class="btn btn-outline-secondary">Submit</button>
   </div>
 </form>
+<p>
+  Form Status: {{ profileForm.status }}
+</p>
