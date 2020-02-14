@@ -7,9 +7,14 @@
            formControlName="firstName">
   </label>
 
-  <div class="alert alert-danger"
-       *ngIf="profileForm.controls['firstName'].invalid && profileForm.controls['firstName'].touched">
-    first name can only contain numbers and letters
+  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+       class="alert alert-danger">
+    <div *ngIf="firstName.errors.required">
+      first name is required
+    </div>
+    <div *ngIf="firstName.errors.pattern">
+      first name can only contain numbers and letters
+    </div>
   </div>
 
   <label> <span class="text">Last name:</span>
@@ -18,9 +23,14 @@
            formControlName="lastName">
   </label>
 
-  <div class="alert alert-danger"
-       *ngIf="profileForm.controls['lastName'].invalid && profileForm.controls['lastName'].touched">
-    last name can only contain numbers and letters
+  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+       class="alert alert-danger">
+    <div *ngIf="lastName.errors.required">
+      last name is required
+    </div>
+    <div *ngIf="lastName.errors.pattern">
+      last name can only contain numbers and letters
+    </div>
   </div>
 
   <label> <span class="text">User name:</span>
@@ -29,9 +39,14 @@
            formControlName="userName">
   </label>
 
-  <div class="alert alert-danger"
-       *ngIf="profileForm.controls['userName'].invalid && profileForm.controls['userName'].touched">
-    user name can only contain numbers and letters
+  <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+       class="alert alert-danger">
+    <div *ngIf="userName.errors.required">
+      user name is required
+    </div>
+    <div *ngIf="userName.errors.pattern">
+      user name can only contain numbers and letters
+    </div>
   </div>
 
   <label> <span class="text">Email:</span>
@@ -40,9 +55,14 @@
            formControlName="email">
   </label>
 
-  <div class="alert alert-danger"
-       *ngIf="profileForm.controls['email'].invalid && profileForm.controls['email'].touched">
-    enter valid email
+  <div *ngIf="email.invalid && email.touched"
+       class="alert alert-danger">
+    <div *ngIf="email.errors.required">
+      email is required
+    </div>
+    <div *ngIf="email.errors.pattern">
+      enter valid email
+    </div>
   </div>
 
   <label> <span class="text">Password:</span>
@@ -51,9 +71,14 @@
            formControlName="password">
   </label>
 
-  <div class="alert alert-danger"
-       *ngIf="profileForm.controls['password'].invalid && profileForm.controls['password'].touched">
-    password must contain at least 10 characters
+  <div *ngIf="password.invalid && (password.dirty || password.touched)"
+       class="alert alert-danger">
+    <div *ngIf="password.errors.required">
+      password is required
+    </div>
+    <div *ngIf="password.errors.minlength">
+      password must contain at least 10 characters
+    </div>
   </div>
 
   <label> <span class="text">Confirm password:</span>
@@ -62,9 +87,12 @@
            formControlName="confirmPassword">
   </label>
 
-  <div class="alert alert-danger"
-       *ngIf="profileForm.controls['confirmPassword'].invalid && profileForm.controls['confirmPassword'].touched">
-    password must contain at least 10 characters
+  <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+       class="alert alert-danger">
+    <div *ngIf="confirmPassword.errors.required">
+      confirm password is required
+    </div>
+
   </div>
 
   <div class="form-inline">
@@ -78,6 +106,13 @@
         <option>5</option>
       </select>
     </label>
+  </div>
+
+  <div *ngIf="region.invalid && (region.dirty || region.touched)"
+       class="alert alert-danger">
+    <div *ngIf="region.errors.required">
+      region is required
+    </div>
   </div>
 
   <div class="form-inline">
