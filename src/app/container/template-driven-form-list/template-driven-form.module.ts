@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {TemplateDrivenFormComponent} from './template-driven-form.component';
 
 @NgModule({
@@ -7,7 +8,8 @@ import {TemplateDrivenFormComponent} from './template-driven-form.component';
     TemplateDrivenFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     TemplateDrivenFormComponent]

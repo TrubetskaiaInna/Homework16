@@ -1,4 +1,7 @@
-<form class="form-inline my-2 my-lg-0" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<h3>Reactive form</h3>
+<form class="form-inline my-2 my-lg-0"
+      [formGroup]="profileForm"
+      (ngSubmit)="onSubmit()">
 
   <label> <span class="text">First name:</span>
     <input id="firstName"
@@ -68,10 +71,11 @@
   <label> <span class="text">Password:</span>
     <input type="password"
            class="form-control mr-sm-2"
-           formControlName="password">
+           formControlName="password"
+           (input)="validPassword()">
   </label>
 
-  <div *ngIf="password.invalid && (password.dirty || password.touched)"
+  <div *ngIf="password.invalid && password.touched"
        class="alert alert-danger">
     <div *ngIf="password.errors.required">
       password is required
@@ -84,20 +88,27 @@
   <label> <span class="text">Confirm password:</span>
     <input type="password"
            class="form-control mr-sm-2"
-           formControlName="confirmPassword">
+           formControlName="confirmPassword"
+           (input)="validPassword()">
   </label>
 
-  <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+  <div *ngIf="confirmPassword.invalid && confirmPassword.touched"
        class="alert alert-danger">
     <div *ngIf="confirmPassword.errors.required">
       confirm password is required
     </div>
-
   </div>
+
+    <div *ngIf="errors"
+         class="alert alert-danger">
+      {{errors}}
+    </div>
+
+
 
   <div class="form-inline">
     <label> <span class="text">Region:</span>
-      <select class="form-control"
+      <select class="form-control mr-sm-2"
               formControlName="region">
         <option>1</option>
         <option>2</option>
@@ -119,13 +130,15 @@
     <span class="text"> Sex </span>
     <div class="wrapperCheck">
       <label class="text">
-        <input type="radio" class="form-check-input"
+        <input type="radio"
+               class="form-check-input mr-sm-2"
                value="men"
                formControlName="sex">
         men
       </label>
       <label class="text">
-        <input type="radio" class="form-check-input"
+        <input type="radio"
+               class="form-check-input mr-sm-2"
                value="women"
                formControlName="sex">
         women
@@ -137,7 +150,7 @@
   <div class="form-check">
     <label>
       <span class="textCheck"> Send me promotional emails:</span>
-      <input class="form-check-input"
+      <input class="form-check-input mr-sm-2"
              type="checkbox"
              formControlName="emailPermission">
     </label>
@@ -146,15 +159,14 @@
   <div class="form-inline">
     <label>
       <span class="text">Additional info:</span>
-      <textarea class="form-control" rows="3"
+      <textarea class="form-control mr-sm-2" rows="3"
                 formControlName="additionalInfo"></textarea>
     </label>
   </div>
 
   <div class="wrapperButton">
-    <button [disabled]="!profileForm.valid" class="btn btn-outline-secondary">Submit</button>
+    <button [disabled]="!profileForm.valid || errors"
+            class="btn btn-secondary disabled">Submit
+    </button>
   </div>
 </form>
-<p>
-  Form Status: {{ profileForm.status }}
-</p>

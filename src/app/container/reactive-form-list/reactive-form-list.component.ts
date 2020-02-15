@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {FormBuilder, Validators, FormGroup, Validator} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   templateUrl: './reactive-form-list.html',
   styleUrls: ['./reactive-form-list.scss']
 })
 
-
 export class ReactiveFormListComponent {
   constructor(private fb: FormBuilder) {
   }
 
+  public errors: string;
   profileForm = this.fb.group({
     firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
     lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
@@ -23,6 +23,16 @@ export class ReactiveFormListComponent {
     emailPermission: false,
     additionalInfo: ['']
   });
+
+  validPassword() {
+    const pass = this.profileForm.get('password');
+    const conPass = this.profileForm.get('confirmPassword');
+    if (pass.value !== conPass.value) {
+      this.errors = 'password does not match';
+    } else {
+      this.errors = '';
+    }
+  }
 
   get firstName() {
     return this.profileForm.get('firstName');
@@ -52,22 +62,16 @@ export class ReactiveFormListComponent {
     return this.profileForm.get('region');
   }
 
-  // checkPasswords(group: FormGroup) {
-  //   const pass = group.controls.password.value;
-  //   const confirmPass = group.controls.confirmPassword.value;
-  //   return pass === confirmPass ? null : {not: true};
-  // }
-
   onSubmit() {
     console.log(this.profileForm.value);
     this.profileForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
-      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
-      userName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(10)]],
-      confirmPassword: ['', Validators.required],
-      region: ['', Validators.required],
+      firstName: [''],
+      lastName: [''],
+      userName: [''],
+      email: [''],
+      password: [''],
+      confirmPassword: [''],
+      region: [''],
       sex: [''],
       emailPermission: false,
       additionalInfo: ['']

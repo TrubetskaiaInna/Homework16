@@ -1,45 +1,52 @@
-.form-inline{
+h3 {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  margin: auto;
+}
+
+.form-inline {
   display: flex;
   justify-content: center;
   width: 600px;
   margin: 10px auto;
 }
 
-.form-control{
+.form-control {
   width: 400px;
   padding-left: 30px;
 }
 
-.text{
+.text {
   width: 100px;
   padding-right: 8px;
   color: grey;
 }
 
-.wrapperButton{
+.wrapperButton {
   display: flex;
   justify-content: center;
   width: 600px;
   margin-top: 20px;
 }
 
-.form-check{
+.form-check {
   display: flex;
   justify-content: flex-end;
   width: 500px;
 }
 
-.wrapperCheck{
+.wrapperCheck {
   display: flex;
   justify-content: flex-end;
   width: 400px;
 }
 
-.textCheck{
+.textCheck {
   width: 250px;
   color: grey;
 }
 
-.alert{
+.alert {
   width: 500px;
 }
