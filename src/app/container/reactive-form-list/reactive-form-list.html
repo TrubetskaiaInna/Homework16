@@ -99,12 +99,10 @@
     </div>
   </div>
 
-    <div *ngIf="errors"
-         class="alert alert-danger">
-      {{errors}}
-    </div>
-
-
+  <div *ngIf="errors && (confirmPassword.touched || confirmPassword.dirty)"
+       class="alert alert-danger">
+    {{errors}}
+  </div>
 
   <div class="form-inline">
     <label> <span class="text">Region:</span>
@@ -145,7 +143,6 @@
       </label>
     </div>
   </div>
-
 
   <div class="form-check">
     <label>

@@ -117,7 +117,7 @@
     </div>
   </div>
 
-  <div *ngIf="errors"
+  <div *ngIf="errors && (ConfirmPassword.dirty|| ConfirmPassword.touched)"
        class="alert alert-danger">
     {{errors}}
   </div>

@@ -17,7 +17,7 @@ export class TemplateDrivenFormComponent {
   public sex: string;
   public emailPermission: false;
   public additionalInfo: string;
-  public errors: string ;
+  public errors: string;
 
   constructor() {
   }
