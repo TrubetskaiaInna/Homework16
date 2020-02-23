@@ -1,13 +1,19 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PageNotFoundComponent} from './container/page-not-found/page-not-found.component';
-import {ReactiveFormListComponent} from './container/reactive-form-list/reactive-form-list.component';
-import {TemplateDrivenFormComponent} from './container/template-driven-form-list/template-driven-form.component';
 
 const routes: Routes = [
-  {path: 'reactive', component: ReactiveFormListComponent},
-  {path: 'template-driven', component: TemplateDrivenFormComponent},
-  {path: '', redirectTo: '/reactive', pathMatch: 'full'},
+  {
+    path: 'reactive',
+    loadChildren: () => import('./container/reactive-form-list/reactive-form-list.module')
+      .then(module => module.ReactiveFormListModule)
+  },
+  {
+    path: 'template-driven',
+    loadChildren: () => import('./container/template-driven-form-list/template-driven-form.module')
+      .then(module => module.TemplateDrivenFormModule)
+  },
+  {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 

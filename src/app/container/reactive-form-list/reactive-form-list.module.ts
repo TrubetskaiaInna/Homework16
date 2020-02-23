@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormListComponent} from './reactive-form-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormListRoutingModule} from './reactive-form-list.routing.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReactiveFormListRoutingModule
   ],
   exports: [
     ReactiveFormListComponent
